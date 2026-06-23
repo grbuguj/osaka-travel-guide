@@ -226,6 +226,9 @@
     background: var(--surface2);
     border-radius: var(--radius-sm);
     padding: 10px 12px;
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .dinner-opt-top {
     display: flex; gap: 10px; align-items: flex-start;
   }
   .opt-badge {
@@ -353,6 +356,35 @@
   }
   .map-route-btn:active { opacity: 0.8; }
 
+  /* ── IMAGES ── */
+  .img-strip {
+    display: flex; gap: 5px;
+    margin-top: 8px; overflow: hidden;
+    border-radius: var(--radius-sm);
+  }
+  .img-strip-item {
+    flex: 1; aspect-ratio: 1/1;
+    border-radius: var(--radius-sm);
+    overflow: hidden; background: var(--border);
+    position: relative;
+  }
+  .img-strip-item img {
+    width: 100%; height: 100%;
+    object-fit: cover; display: block;
+    transition: opacity 0.2s;
+  }
+  .img-skeleton {
+    width: 100%; height: 100%;
+    background: linear-gradient(90deg, var(--border) 25%, var(--bg) 50%, var(--border) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.2s infinite;
+  }
+  .dinner-opt .img-strip { margin-top: 0; }
+  @keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+
   /* NOTICE */
   .notice {
     background: var(--red-light); border-radius: var(--radius-md);
@@ -409,7 +441,7 @@
     <div class="tl-row">
       <div class="tl-axis"><span class="tl-time">10:00</span><div class="tl-dot" style="background:var(--green)"></div><div class="tl-line"></div></div>
       <div class="tl-body">
-        <div class="card">
+        <div class="card" data-query="간사이공항 오사카">
           <div class="card-name">간사이 국제공항 도착</div>
           <div class="card-desc">난카이전철 급행 → 난바 약 40분</div>
           <div class="card-bottom"><div class="tags"><span class="tag tag-green">Suica 사용 가능</span></div>
@@ -438,7 +470,7 @@
     <div class="tl-row">
       <div class="tl-axis"><span class="tl-time">12:00</span><div class="tl-dot" style="background:var(--gold)"></div><div class="tl-line"></div></div>
       <div class="tl-body">
-        <div class="meal-card morning">
+        <div class="meal-card morning" data-query="나카자키초 KAYA cafe 오사카">
           <div class="meal-badge morning">🍽️ 점심</div>
           <div class="meal-name">KAYA cafe — 나카자키초</div>
           <div class="meal-desc">두부 티라미수 · 오무라이스 시그니처. 쇼와 감성 인테리어. 12시 오픈이라 딱 맞음!</div>
@@ -454,7 +486,7 @@
     <div class="tl-row">
       <div class="tl-axis"><span class="tl-time">13:00</span><div class="tl-dot" style="background:var(--green)"></div><div class="tl-line"></div></div>
       <div class="tl-body">
-        <div class="card">
+        <div class="card" data-query="나카자키초 골목 오사카">
           <div class="card-name">나카자키초 카페 거리 산책</div>
           <div class="card-desc">100년 된 고택 카페 · 그린페페 · 잼팟 소품샵. 골목 누비며 인생샷</div>
           <div class="card-bottom">
@@ -469,7 +501,7 @@
     <div class="tl-row">
       <div class="tl-axis"><span class="tl-time">14:00</span><div class="tl-dot" style="background:var(--green)"></div><div class="tl-line"></div></div>
       <div class="tl-body">
-        <div class="card">
+        <div class="card" data-query="기타하마 강변 오사카">
           <div class="card-name">기타하마 강변 카페거리</div>
           <div class="card-desc">Brooklyn Roasting Co · & Island 리버뷰 테라스. 오사카 레트로 건물 + 강변 산책. 카페에서 더위 피하기</div>
           <div class="card-bottom">
@@ -484,7 +516,7 @@
     <div class="tl-row">
       <div class="tl-axis"><span class="tl-time">15:00</span><div class="tl-dot" style="background:var(--blue)"></div><div class="tl-line"></div></div>
       <div class="tl-body">
-        <div class="card">
+        <div class="card" data-query="혼마치 오사카">
           <div class="card-name">AB Hotel 혼마치 체크인</div>
           <div class="card-desc">짐 찾고 방 들어가기. 잠깐 쉬고 출발!</div>
           <div class="card-bottom">
@@ -499,7 +531,7 @@
     <div class="tl-row">
       <div class="tl-axis"><span class="tl-time">16:00</span><div class="tl-dot" style="background:var(--green)"></div><div class="tl-line"></div></div>
       <div class="tl-body">
-        <div class="card">
+        <div class="card" data-query="아메리카무라 오사카">
           <div class="card-name">아메리카무라 빈티지 쇼핑</div>
           <div class="card-desc">킨달 중고 명품 4층(요지·마르지엘라) · 세컨스트리트 스트릿. 해 꺾인 오후라 걸을 만함</div>
           <div class="card-bottom">
@@ -514,7 +546,7 @@
     <div class="tl-row">
       <div class="tl-axis"><span class="tl-time">17:30</span><div class="tl-dot" style="background:var(--gold)"></div><div class="tl-line"></div></div>
       <div class="tl-body">
-        <div class="meal-card snack">
+        <div class="meal-card snack" data-query="도톤보리 글리코상 야경 오사카">
           <div class="meal-badge snack">🍡 간식</div>
           <div class="meal-name">도톤보리 — 글리코상 + 타코야키</div>
           <div class="meal-desc">글리코상 인생샷 📸 와나카 or 쿠쿠루 타코야키. 야경 시작되는 저녁이라 딱!</div>
@@ -535,21 +567,25 @@
             <div class="meal-badge dinner">🌙 저녁 — 골라요!</div>
           </div>
           <div class="dinner-options">
-            <div class="dinner-opt">
+            <div class="dinner-opt" data-query="킨류라멘 도톤보리 오사카">
+      <div class="dinner-opt-top">
               <span class="opt-badge opt-a">A</span>
               <div style="flex:1">
                 <div class="meal-name" style="font-size:13px">킨류라멘 (도톤보리)</div>
                 <div class="meal-desc">돈코쓰 800엔. 웨이팅 거의 없음. 현금만</div>
               </div>
               <a class="map-btn" href="https://maps.google.com/?q=34.6687,135.5031" target="_blank" style="align-self:center"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>지도</a>
+      </div>
             </div>
-            <div class="dinner-opt">
+            <div class="dinner-opt" data-query="우오신 스시 신사이바시 오사카">
+      <div class="dinner-opt-top">
               <span class="opt-badge opt-b">B</span>
               <div style="flex:1">
                 <div class="meal-name" style="font-size:13px">우오신 스시 (신사이바시)</div>
                 <div class="meal-desc">두툼한 네타 스시. 웨이팅 30분 내외</div>
               </div>
               <a class="map-btn" href="https://maps.google.com/?q=34.6739,135.5025" target="_blank" style="align-self:center"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>지도</a>
+      </div>
             </div>
           </div>
         </div>
@@ -613,7 +649,7 @@
     <div class="tl-row">
       <div class="tl-axis"><span class="tl-time">08:30</span><div class="tl-dot" style="background:var(--purple)"></div><div class="tl-line"></div></div>
       <div class="tl-body">
-        <div class="card">
+        <div class="card" data-query="아라시야마 대나무숲 교토">
           <div class="card-name">아라시야마 대나무 숲</div>
           <div class="card-desc">황금 타임. 사진 여기서 다 찍기!</div>
           <div class="card-bottom">
@@ -627,7 +663,7 @@
     <div class="tl-row">
       <div class="tl-axis"><span class="tl-time">09:30</span><div class="tl-dot" style="background:var(--purple)"></div><div class="tl-line"></div></div>
       <div class="tl-body">
-        <div class="card">
+        <div class="card" data-query="아라시야마 도월교 교토">
           <div class="card-name">도월교 (토게츠쿄)</div>
           <div class="card-desc">강변 뷰 + 산 배경 인생샷 포인트</div>
           <div class="card-bottom">
@@ -667,7 +703,7 @@
     <div class="tl-row">
       <div class="tl-axis"><span class="tl-time">13:00</span><div class="tl-dot" style="background:var(--green)"></div><div class="tl-line"></div></div>
       <div class="tl-body">
-        <div class="meal-card lunch">
+        <div class="meal-card lunch" data-query="후시미이나리 장어덮밥 히츠마부시 교토">
           <div class="meal-badge lunch">🍱 늦은 점심 — 장어덮밥</div>
           <div class="meal-name">도이카츠 우나기 (후시미이나리 바로 옆)</div>
           <div class="meal-desc">숯불 장어덮밥. 한 마리 통째 + 폭신 계란말이. 3가지 방법으로 먹는 히츠마부시. 평점 4.5</div>
@@ -682,7 +718,7 @@
     <div class="tl-row">
       <div class="tl-axis"><span class="tl-time">14:00</span><div class="tl-dot" style="background:var(--purple)"></div><div class="tl-line"></div></div>
       <div class="tl-body">
-        <div class="card">
+        <div class="card" data-query="후시미이나리 센본도리이 교토">
           <div class="card-name">후시미이나리 (여우신사)</div>
           <div class="card-desc">센본도리이 붉은 기둥. 중간까지만 약 1시간. 나무 그늘이라 한여름에도 걸을 만함</div>
           <div class="card-bottom">
@@ -710,7 +746,7 @@
     <div class="tl-row">
       <div class="tl-axis"><span class="tl-time">16:30</span><div class="tl-dot" style="background:var(--purple)"></div><div class="tl-line"></div></div>
       <div class="tl-body">
-        <div class="card highlight" style="border-left:3px solid var(--purple)">
+        <div class="card highlight" style="border-left:3px solid var(--purple)" data-query="기온 시라카와 타츠미바시 교토">
           <div class="card-name">기온 시라카와 + 타츠미바시 🏮</div>
           <div class="card-desc">버드나무 + 돌바닥길 + 전통 가옥. 해질녘이 베스트! 타츠미바시 인생샷. 게이샤 무단촬영 금지(벌금)</div>
           <div class="card-bottom">
@@ -729,21 +765,25 @@
             <div class="meal-badge dinner">🌙 저녁 — 기온/가와라마치에서 골라요!</div>
           </div>
           <div class="dinner-options">
-            <div class="dinner-opt">
+            <div class="dinner-opt" data-query="교토 규카츠 가와라마치">
+      <div class="dinner-opt-top">
               <span class="opt-badge opt-a">A</span>
               <div style="flex:1">
                 <div class="meal-name" style="font-size:13px">교토 규카츠 모토무라 (산조 가와라마치)</div>
                 <div class="meal-desc">소고기 튀김(규카츠)을 직접 구워 먹는 곳. 강변뷰. 평점 4.9! 5시쯤 가면 웨이팅 없음</div>
               </div>
               <a class="map-btn" href="https://maps.google.com/?q=35.0088,135.7711" target="_blank" style="align-self:center"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>지도</a>
+      </div>
             </div>
-            <div class="dinner-opt">
+            <div class="dinner-opt" data-query="기온 가와라마치 라멘 오사카">
+      <div class="dinner-opt-top">
               <span class="opt-badge opt-b">B</span>
               <div style="flex:1">
                 <div class="meal-name" style="font-size:13px">기온 가와라마치 라멘 or 오반자이</div>
                 <div class="meal-desc">가볍게 가고 싶으면 기온 골목 라멘, 교토 가정식 오반자이도 추천</div>
               </div>
               <a class="map-btn" href="https://maps.google.com/?q=35.0036,135.7720" target="_blank" style="align-self:center"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>지도</a>
+      </div>
             </div>
           </div>
         </div>
@@ -790,7 +830,7 @@
     <div class="tl-row">
       <div class="tl-axis"><span class="tl-time">09:00</span><div class="tl-dot" style="background:var(--gold)"></div><div class="tl-line"></div></div>
       <div class="tl-body">
-        <div class="meal-card morning">
+        <div class="meal-card morning" data-query="구로몬 시장 오사카 해산물">
           <div class="meal-badge morning">☀️ 아침 — 구로몬 시장</div>
           <div class="meal-name">굴 · 참치 · 타코야키 · 과일 꼬치</div>
           <div class="meal-desc">걸어다니며 하나씩. 굴 1개 300엔, 참치 500엔대. 현금 필수!</div>
@@ -805,7 +845,7 @@
     <div class="tl-row">
       <div class="tl-axis"><span class="tl-time">10:30</span><div class="tl-dot" style="background:var(--orange)"></div><div class="tl-line"></div></div>
       <div class="tl-body">
-        <div class="card">
+        <div class="card" data-query="신사이바시 쇼핑 오사카">
           <div class="card-name">신사이바시 + 돈키호테 면세</div>
           <div class="card-desc">1만5천엔↑ 한 번에 계산해야 소비세 환급. 마쓰모토 키요시 약국</div>
           <div class="card-bottom">
@@ -844,7 +884,7 @@
     <div class="tl-row">
       <div class="tl-axis"><span class="tl-time">14:30</span><div class="tl-dot" style="background:var(--orange)"></div><div class="tl-line"></div></div>
       <div class="tl-body">
-        <div class="card">
+        <div class="card" data-query="우메다 그랜드프론트 오사카">
           <div class="card-name">우메다 — 그랜드프론트 + 한큐</div>
           <div class="card-desc">한큐 1층 외국인 5% 할인쿠폰 꼭 받기. 지하 식품관 기념품</div>
           <div class="card-bottom">
@@ -858,7 +898,7 @@
     <div class="tl-row">
       <div class="tl-axis"><span class="tl-time">16:30</span><div class="tl-dot" style="background:var(--green)"></div><div class="tl-line"></div></div>
       <div class="tl-body">
-        <div class="card">
+        <div class="card" data-query="나카노시마 공원 오사카">
           <div class="card-name">나카노시마 공원 강변 산책</div>
           <div class="card-desc">도시 속 유럽 감성 강변. 오하츠텐진 가는 길목</div>
           <div class="card-bottom">
@@ -872,7 +912,7 @@
     <div class="tl-row">
       <div class="tl-axis"><span class="tl-time">17:30</span><div class="tl-dot" style="background:var(--orange)"></div><div class="tl-line"></div></div>
       <div class="tl-body">
-        <div class="card">
+        <div class="card" data-query="오하츠텐진 신사 오사카">
           <div class="card-name">오하츠텐진 신사 💕</div>
           <div class="card-desc">커플이 방문하면 사랑이 이루어진다는 신사</div>
           <div class="card-bottom">
@@ -886,7 +926,7 @@
     <div class="tl-row">
       <div class="tl-axis"><span class="tl-time">19:00</span><div class="tl-dot" style="background:var(--orange)"></div><div class="tl-line"></div></div>
       <div class="tl-body">
-        <div class="card">
+        <div class="card" data-query="우메다 스카이빌딩 야경 오사카">
           <div class="card-name">스카이빌딩 공중정원 전망대</div>
           <div class="card-desc">7월 일몰 약 19:10. 노을 → 야경 한 번에! 루미데크 인생샷. 입장 1,500엔</div>
           <div class="card-bottom">
@@ -905,21 +945,25 @@
             <div class="meal-badge dinner">🌙 저녁 — 골라요!</div>
           </div>
           <div class="dinner-options">
-            <div class="dinner-opt">
+            <div class="dinner-opt" data-query="야키니쿠 강 우메다 오사카">
+      <div class="dinner-opt-top">
               <span class="opt-badge opt-a">A</span>
               <div style="flex:1">
                 <div class="meal-name" style="font-size:13px">야키니쿠 강 우메다점</div>
                 <div class="meal-desc">와규 A5 120분 무제한. 평점 4.7. 2인 18,500엔</div>
               </div>
               <a class="map-btn" href="https://maps.google.com/?q=34.7007,135.5011" target="_blank" style="align-self:center"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>지도</a>
+      </div>
             </div>
-            <div class="dinner-opt">
+            <div class="dinner-opt" data-query="KIJI 오코노미야키 우메다 오사카">
+      <div class="dinner-opt-top">
               <span class="opt-badge opt-b">B</span>
               <div style="flex:1">
                 <div class="meal-name" style="font-size:13px">KIJI 오코노미야키 (신우메다)</div>
                 <div class="meal-desc">60년 노포. 미슐랭 수록. ⚠️ 일요일 휴무!</div>
               </div>
               <a class="map-btn" href="https://maps.google.com/?q=34.7035,135.4978" target="_blank" style="align-self:center"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>지도</a>
+      </div>
             </div>
           </div>
         </div>
@@ -972,7 +1016,7 @@
     <div class="tl-row">
       <div class="tl-axis"><span class="tl-time">10:30</span><div class="tl-dot" style="background:var(--gold)"></div><div class="tl-line"></div></div>
       <div class="tl-body">
-        <div class="meal-card morning">
+        <div class="meal-card morning" data-query="혼마치 브런치 카페 오사카">
           <div class="meal-badge morning">☕ 브런치</div>
           <div class="meal-name">혼마치 근처 카페</div>
           <div class="meal-desc">마지막 일본 커피 한 잔. 편의점 쇼핑도 이때!</div>
@@ -983,7 +1027,7 @@
     <div class="tl-row">
       <div class="tl-axis"><span class="tl-time">11:30</span><div class="tl-dot" style="background:var(--blue)"></div><div class="tl-line"></div></div>
       <div class="tl-body">
-        <div class="card">
+        <div class="card" data-query="고베공항">
           <div class="card-name">고베공항으로 출발</div>
           <div class="card-desc">한신선 → 산노미야 환승 → 포트라이너. 1시간 20~30분</div>
           <div class="card-bottom"><div class="tags"><span class="tag tag-blue">13:00 도착 목표</span></div></div>
@@ -1130,22 +1174,71 @@
 </div>
 
 <script>
-  const panels  = document.querySelectorAll('.panel');
-  const tabs    = document.querySelectorAll('.tab');
-  const navItems= document.querySelectorAll('.nav-item');
-  const idxMap  = {d1:0,d2:1,d3:2,d4:3,info:4};
+  const API_BASE = 'https://seoul-random-date.vercel.app/api/images';
+  const imgCache = {};
 
-  function go(id, clickedTab) {
-    panels.forEach(p=>p.classList.remove('active'));
+  async function loadImages(card) {
+    const query = card.dataset.query;
+    if (!query || card.dataset.loaded) return;
+    card.dataset.loaded = 'true';
+
+    const strip = document.createElement('div');
+    strip.className = 'img-strip';
+    strip.innerHTML = `
+      <div class="img-strip-item"><div class="img-skeleton"></div></div>
+      <div class="img-strip-item"><div class="img-skeleton"></div></div>
+      <div class="img-strip-item"><div class="img-skeleton"></div></div>`;
+    card.appendChild(strip);
+
+    try {
+      let items = imgCache[query];
+      if (!items) {
+        const res = await fetch(`${API_BASE}?query=${encodeURIComponent(query)}`);
+        items = await res.json();
+        imgCache[query] = items;
+      }
+      strip.innerHTML = '';
+      items.slice(0, 3).forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'img-strip-item';
+        const img = document.createElement('img');
+        img.src = item.thumbnail || item.link;
+        img.alt = query;
+        img.loading = 'lazy';
+        img.onerror = () => div.remove();
+        div.appendChild(img);
+        strip.appendChild(div);
+      });
+      if (!strip.children.length) strip.remove();
+    } catch(e) { strip.remove(); }
+  }
+
+  function loadPanelImages(panelId) {
+    document.getElementById(panelId)
+      ?.querySelectorAll('[data-query]')
+      .forEach(card => loadImages(card));
+  }
+
+  const panels   = document.querySelectorAll('.panel');
+  const tabs     = document.querySelectorAll('.tab');
+  const navItems = document.querySelectorAll('.nav-item');
+  const idxMap   = {d1:0, d2:1, d3:2, d4:3, info:4};
+
+  function go(id) {
+    panels.forEach(p => p.classList.remove('active'));
     document.getElementById(id).classList.add('active');
-    tabs.forEach(t=>t.classList.remove('active'));
+    tabs.forEach(t => t.classList.remove('active'));
     tabs[idxMap[id]].classList.add('active');
-    window.scrollTo(0,0);
+    window.scrollTo(0, 0);
+    loadPanelImages(id);
   }
   function setNav(btn) {
-    navItems.forEach(n=>n.classList.remove('active'));
+    navItems.forEach(n => n.classList.remove('active'));
     btn.classList.add('active');
   }
+  function toggleCheck(item) { item.classList.toggle('done'); }
+
+  window.addEventListener('DOMContentLoaded', () => loadPanelImages('d1'));
 </script>
 </body>
 </html>
